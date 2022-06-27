@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  value = 'World 345';
+  value = 'World OAuth 2.0 site';
 }
