@@ -3,14 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from "@angular/core";
 
 import { AppComponent } from "./app.component";
-import { CoverComponent } from './cover/cover.component';
+import { LineComponent } from './oauth2/line.component';
 
 const routes: Routes = [
-  { path: 'cover', component: CoverComponent }
+  { path: '', component: LineComponent },
+  { path: 'oauth', component: LineComponent }
 ];
 
 @NgModule({
-  declarations: [AppComponent, CoverComponent],
+  declarations: [AppComponent, LineComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes)
