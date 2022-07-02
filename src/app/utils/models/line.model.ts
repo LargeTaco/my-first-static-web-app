@@ -7,6 +7,16 @@ export interface LineTokenInfo {
   token_type: string
 }
 
+export interface IdToken {
+  amr: string[],
+  aud: string,
+  exp: number,
+  iat: number,
+  iss: string,
+  name: string,
+  sub: string
+}
+
 export interface LineUserInfo {
   sub: string,
   name: string,

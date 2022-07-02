@@ -37,6 +37,39 @@
     </tr>
   </tbody>
 </table>
+
+<table *ngIf="!!data&&!!idToken&&action==='TK'">
+  <tbody>
+    <tr>
+      <td>amr</td>
+      <td>{{idToken.amr}}</td>
+    </tr>
+    <tr>
+      <td>aud</td>
+      <td>{{idToken.aud|date}}</td>
+    </tr>
+    <tr>
+      <td>exp</td>
+      <td>{{idToken.exp|date}}</td>
+    </tr>
+    <tr>
+      <td>iat</td>
+      <td>{{idToken.iat|date}}</td>
+    </tr>
+    <tr>
+      <td>iss</td>
+      <td>{{idToken.iss}}</td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>{{idToken.name}}</td>
+    </tr>
+    <tr>
+      <td>sub</td>
+      <td>{{idToken.sub}}</td>
+    </tr>
+  </tbody>
+</table>
 <table *ngIf="!!user&&action==='UI'">
   <tbody>
     <tr>
