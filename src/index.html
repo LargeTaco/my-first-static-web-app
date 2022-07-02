@@ -1,13 +1,37 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>OAuth2.0 practice</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js'></script>
 </head>
+
 <body>
-  <app-root></app-root>
+
+  <app-root code=code></app-root>
+
+  <!-- <button id="lineLoginBtn">LINE 登入</button> -->
 </body>
+<script>
+  $('#lineLoginBtn').on('click', function (e) {
+    let client_id = '1657262818';
+    let redirect_uri = 'http://localhost:4200/';
+    let link = 'https://access.line.me/oauth2/v2.1/authorize?';
+    link += 'response_type=code';
+    link += '&client_id=' + client_id;
+    link += '&redirect_uri=' + redirect_uri;
+    link += '&state=login';
+    link += '&scope=openid%20profile';
+    window.location.href = link;
+  });
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const params2 = Object.fromEntries(urlSearchParams.entries());
+  console.log('params2', params2);
+  const code = params2.code;
+</script>
+
 </html>

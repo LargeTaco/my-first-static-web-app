@@ -1,6 +1,75 @@
 <div>Hello {{value}}</div>
-<p title="test">
-  <a class="indent-100" routerLink="">home</a>
-  <a class="indent-100" routerLink="/oauth">info</a>
-  <a class="indent-100" href="javascript:void(0)" (click)="doLogoutOut()">logout</a>
+<p>
+  <a class="menu-list" routerLink="">get code</a>
+  <a class="menu-list" href="javascript:void(0)" (click)="doGetToken()">getToken</a>
 </p>
+<p *ngIf="!!data">
+  <a class="menu-list" href="javascript:void(0)" (click)="doGetUserInfo()">user Info</a>
+  <a class="menu-list" href="javascript:void(0)" (click)="doGetUserProfile()">user profile</a>
+  <a class="menu-list" href="javascript:void(0)" (click)="doLogoutOut()">logout</a>
+</p>
+
+<table *ngIf="!!data&&action==='TK'">
+  <tbody>
+    <tr>
+      <td>access_token</td>
+      <td>{{data.access_token}}</td>
+    </tr>
+    <tr>
+      <td>expires_in</td>
+      <td>{{data.expires_in}}</td>
+    </tr>
+    <tr>
+      <td>id_token</td>
+      <td>{{data.id_token}}</td>
+    </tr>
+    <tr>
+      <td>refresh_token</td>
+      <td>{{data.refresh_token}}</td>
+    </tr>
+    <tr>
+      <td>scope</td>
+      <td>{{data.scope}}</td>
+    </tr>
+    <tr>
+      <td>token_type</td>
+      <td>{{data.token_type}}</td>
+    </tr>
+  </tbody>
+</table>
+<table *ngIf="!!user&&action==='UI'">
+  <tbody>
+    <tr>
+      <td>name</td>
+      <td>{{user.name}}</td>
+    </tr>
+    <tr>
+      <td>sub</td>
+      <td>{{user.sub}}</td>
+    </tr>
+    <tr>
+      <td>picture</td>
+      <td>{{user.picture}}</td>
+    </tr>
+  </tbody>
+</table>
+<table *ngIf="!!userProfile&&action==='UP'">
+  <tbody>
+    <tr>
+      <td>userId</td>
+      <td>{{userProfile.userId}}</td>
+    </tr>
+    <tr>
+      <td>displayName</td>
+      <td>{{userProfile.displayName}}</td>
+    </tr>
+    <tr>
+      <td>pictureUrl</td>
+      <td>{{userProfile.pictureUrl}}</td>
+    </tr>
+    <tr>
+      <td>statusMessage</td>
+      <td>{{userProfile.statusMessage}}</td>
+    </tr>
+  </tbody>
+</table>

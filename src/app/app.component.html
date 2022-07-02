@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<ng-container *ngIf="!code">
+  <button id="lineLoginBtn" (click)="doLogin()">LINE 登入</button>
+</ng-container>
+<ng-container *ngIf="params?.code">
+  <router-outlet></router-outlet>
+</ng-container>
