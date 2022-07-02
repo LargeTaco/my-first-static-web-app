@@ -14,7 +14,8 @@ export interface IdToken {
   iat: number,
   iss: string,
   name: string,
-  sub: string
+  sub: string,
+  email: string
 }
 
 export interface LineUserInfo {

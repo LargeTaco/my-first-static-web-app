@@ -37,7 +37,7 @@ export class AppComponent {
     link += '&client_id=' + client_id;
     link += '&redirect_uri=' + redirect_uri;
     link += '&state=login';
-    link += '&scope=openid%20profile';
+    link += '&scope=profile%20openid%20email';
     window.location.href = link;
   }
 }
