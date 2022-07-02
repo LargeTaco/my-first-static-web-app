@@ -12,7 +12,7 @@ export class CoreService {
 
   doLogin() {
     let client_id = '1657262818';
-    let redirect_uri = 'http://localhost:4200/';
+    let redirect_uri = 'https://jolly-bay-012fe7600.1.azurestaticapps.net/';
     let link = 'https://access.line.me/oauth2/v2.1/authorize?';
     link += 'response_type=code';
     link += '&client_id=' + client_id;
@@ -34,7 +34,7 @@ export class CoreService {
     const body = new URLSearchParams({
       grant_type: "authorization_code",
       code: code,
-      redirect_uri: encodeURI('http://localhost:4200/'),
+      redirect_uri: encodeURI('https://jolly-bay-012fe7600.1.azurestaticapps.net/'),
       client_id: '1657262818',
       client_secret: '7e24e5aeb5f90630cc9d145c88ce38af'
     });
