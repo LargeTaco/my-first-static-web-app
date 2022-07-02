@@ -42,8 +42,7 @@ export class LineComponent implements OnInit {
 
     }, error => {
       if (error.status === 400 && error.error.error_description === 'invalid authorization code') {
-        alert(error.error.error_description);
-        this.router.navigate([]);
+        alert('code expired, click [get code] to update new code');
       }
     });
   }

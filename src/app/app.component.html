@@ -1,5 +1,6 @@
 <ng-container *ngIf="!code">
-  <button id="lineLoginBtn" (click)="doLogin()">LINE 登入</button>
+  <input type="image" (click)="doLogin()" src="./assets/img/btn_login_base.png"
+    onMouseOver="this.src='./assets/img/btn_login_hover.png'" onMouseOut="this.src='./assets/img/btn_login_base.png'" />
 </ng-container>
 <ng-container *ngIf="!!code">
   <router-outlet></router-outlet>
