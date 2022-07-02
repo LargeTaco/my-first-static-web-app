@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LineTokenInfo, LineUserInfo,
-  LineUserProfile, IdToken } from '../utils/models/line.model';
+import {
+  LineTokenInfo, LineUserInfo,
+  LineUserProfile, IdToken
+} from '../utils/models/line.model';
 import { CoreService } from './../utils/core.serivce';
 import { pluck } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -25,13 +27,10 @@ export class LineComponent implements OnInit {
       pluck('params')
     ).subscribe((res) => {
       this.code = res['code'];
-    }
-    );
+    });
   }
 
-  ngOnInit(): void {
-    console.log('comp');
-  }
+  ngOnInit(): void { }
 
   doGetToken() {
     this.action = 'TK';
@@ -39,8 +38,7 @@ export class LineComponent implements OnInit {
       this.data = Object.assign({}, res);
 
       const helper = new JwtHelperService();
-      this.idToken = helper.decodeToken(res.id_token)
-      console.log(this.idToken);
+      this.idToken = helper.decodeToken(res.id_token);
 
     }, error => {
       if (error.status === 400 && error.error.error_description === 'invalid authorization code') {

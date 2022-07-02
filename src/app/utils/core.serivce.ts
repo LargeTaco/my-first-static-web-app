@@ -10,6 +10,18 @@ export class CoreService {
 
   constructor(private http: HttpClient) { }
 
+  doLogin() {
+    let client_id = '1657262818';
+    let redirect_uri = 'http://localhost:4200/';
+    let link = 'https://access.line.me/oauth2/v2.1/authorize?';
+    link += 'response_type=code';
+    link += '&client_id=' + client_id;
+    link += '&redirect_uri=' + redirect_uri;
+    link += '&state=login';
+    link += '&scope=profile%20openid%20email';
+    window.location.href = link;
+  }
+
   getToken(code: string): Observable<LineTokenInfo> {
     const lineLoginTokenUrl = `https://api.line.me/oauth2/v2.1/token`;
     let headers = new HttpHeaders({
