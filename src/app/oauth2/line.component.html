@@ -2,6 +2,7 @@
 <p>
   <a class="menu-list" routerLink="">get code</a>
   <a class="menu-list" href="javascript:void(0)" (click)="doGetToken()">getToken</a>
+  <a class="menu-list" href="javascript:void(0)" (click)="doSubLineNotify()">subscribe line notify</a>
 </p>
 <p *ngIf="!!data">
   <a class="menu-list" href="javascript:void(0)" (click)="doGetUserInfo()">user Info</a>
@@ -9,7 +10,7 @@
   <a class="menu-list" href="javascript:void(0)" (click)="doLogoutOut()">logout</a>
 </p>
 
-<table *ngIf="!!data&&action==='TK'">
+<table *ngIf="state==='login'&&state==='login'&&!!data&&action==='TK'">
   <thead>
     <tr>
       <th>Access Token</th>
@@ -42,8 +43,7 @@
     </tr>
   </tbody>
 </table>
-
-<table *ngIf="!!data&&!!idToken&&action==='TK'">
+<table *ngIf="state==='login'&&!!data&&!!idToken&&action==='TK'">
   <thead>
     <tr>
       <th>ID Token</th>
@@ -84,7 +84,7 @@
     </tr>
   </tbody>
 </table>
-<table *ngIf="!!user&&action==='UI'">
+<table *ngIf="state==='login'&&!!user&&action==='UI'">
   <tbody>
     <tr>
       <td>name</td>
@@ -100,7 +100,7 @@
     </tr>
   </tbody>
 </table>
-<table *ngIf="!!userProfile&&action==='UP'">
+<table *ngIf="state==='login'&&!!userProfile&&action==='UP'">
   <tbody>
     <tr>
       <td>userId</td>

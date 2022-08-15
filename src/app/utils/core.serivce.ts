@@ -12,7 +12,7 @@ export class CoreService {
 
   doLogin() {
     let client_id = '1657262818';
-    let redirect_uri = 'https://jolly-bay-012fe7600.1.azurestaticapps.net/';
+    let redirect_uri = 'http://localhost:4200/';
     let link = 'https://access.line.me/oauth2/v2.1/authorize?';
     link += 'response_type=code';
     link += '&client_id=' + client_id;
@@ -34,7 +34,7 @@ export class CoreService {
     const body = new URLSearchParams({
       grant_type: "authorization_code",
       code: code,
-      redirect_uri: encodeURI('https://jolly-bay-012fe7600.1.azurestaticapps.net/'),
+      redirect_uri: encodeURI('http://localhost:4200/'),
       client_id: '1657262818',
       client_secret: '7e24e5aeb5f90630cc9d145c88ce38af'
     });
@@ -80,6 +80,38 @@ export class CoreService {
     });
 
     return this.http.post<any>(revokeTokenUrl, body, options);
+  }
+
+  doLingNotify() {
+    let client_id = 'PKdelsiNj42FLdMl9X2wYP';
+    let redirect_uri = 'http://localhost:4200/';
+    let link = 'https://notify-bot.line.me/oauth/authorize?';
+    link += 'response_type=code';
+    link += '&client_id=' + client_id;
+    link += '&state=lnotify';
+    link += '&scope=notify';
+    link += '&redirect_uri=' + redirect_uri;
+    window.location.href = link;
+  }
+
+  getNotifyToken(code: string): Observable<any> {
+    const notifyTokenUrl = `https://notify-bot.line.me/oauth/token`;
+    let headers = new HttpHeaders({
+      'Content-Type': '	application/x-www-form-urlencoded'
+    });
+    let options = {
+      headers
+    };
+
+    const body = new URLSearchParams({
+      grant_type: 'authorization_code',
+      code: code,
+      redirect_uri: 'http://localhost:4200/',
+      client_id: 'PKdelsiNj42FLdMl9X2wYP',
+      client_secret: 'uc7GHSyBdeTiIshLny8YLYe8ClU7okfew43A7cqXebc'
+    });
+console.log('getNotifyToken=', notifyTokenUrl)
+    return this.http.post<any>(notifyTokenUrl, body, options);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

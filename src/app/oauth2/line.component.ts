@@ -16,6 +16,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class LineComponent implements OnInit {
   value = 'OAuth 2.0 site';
   code = '';
+  state = '';
   data: LineTokenInfo;
   idToken: IdToken;
   user: LineUserInfo;
@@ -26,11 +27,21 @@ export class LineComponent implements OnInit {
     this.route.queryParamMap.pipe(
       pluck('params')
     ).subscribe((res) => {
+      console.log(res)
       this.code = res['code'];
+      this.state = res['state'] ? res['state'] : '';
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    console.log('state=', this.state);
+    console.log('code=', this.code);
+    if (this.state === 'lnotify') {
+      this.coreService.getNotifyToken(this.code).subscribe(res=>{
+        console.log('notify code to token=', res);
+      });
+    }
+  }
 
   doGetToken() {
     this.action = 'TK';
@@ -67,6 +78,10 @@ export class LineComponent implements OnInit {
     this.coreService.getProfile(this.data.access_token).subscribe(res => {
       this.userProfile = res;
     });
+  }
+
+  doSubLineNotify() {
+    this.coreService.doLingNotify();
   }
 
   doLogoutOut() {

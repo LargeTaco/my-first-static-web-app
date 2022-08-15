@@ -8,12 +8,15 @@ import { CoreService } from './utils/core.serivce';
 })
 export class AppComponent {
   code = '';
+  state;
 
   constructor(
     private route: ActivatedRoute,
     private coreService: CoreService) {
+      console.log('app comp')
     this.route.queryParamMap.subscribe((res) => {
       this.code = res['params']?.code;
+      this.state = res['params']?.state;
     });
   }
 
